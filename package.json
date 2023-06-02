@@ -1,0 +1,21 @@
+{
+  "name": "color.io-b",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc --build",
+    "run": "node ./build/index.js",
+    "dev": "npm run build && npm run run"
+
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^14.11.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.1.3"
+  }
+}
