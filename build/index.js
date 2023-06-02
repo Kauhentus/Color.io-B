@@ -16,15 +16,18 @@ const config_json_1 = require("./config.json");
 const help_1 = require("./commands/help");
 const about_1 = require("./commands/about");
 const convert_1 = require("./commands/convert");
+const view_1 = require("./commands/view");
 const commands = [
     help_1.HelpCommand,
     about_1.AboutCommand,
-    convert_1.ConvertCommand
+    convert_1.ConvertCommand,
+    view_1.ViewCommand
 ];
 const commandDispatch = new Map();
 commandDispatch.set('help', help_1.HelpCommandAction);
 commandDispatch.set('about', about_1.AboutCommandAction);
 commandDispatch.set('convert', convert_1.ConvertCommandAction);
+commandDispatch.set('view', view_1.ViewCommandAction);
 const rest = new discord_js_2.REST({ version: '10' }).setToken(config_json_1.token);
 const loadCommands = () => __awaiter(void 0, void 0, void 0, function* () {
     console.log('Started refreshing application (/) commands.');
@@ -48,3 +51,8 @@ loadCommands().then(() => {
     }));
     client.login(config_json_1.token);
 });
+/*Drawer.squares([
+    new Color('00aaff', 'hex'),
+    new Color('ff00aa', 'hex'),
+    new Color('aaff00', 'hex')
+]);*/ 

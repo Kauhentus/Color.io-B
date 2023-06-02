@@ -9,11 +9,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ConvertCommandAction = exports.ConvertCommand = void 0;
+exports.ConvertCommandAction = exports.ConvertCommand = exports.colorChoices = void 0;
 const discord_js_1 = require("discord.js");
 const index_1 = require("../index");
 const color_1 = require("../util/color");
-const colorChoices = [
+exports.colorChoices = [
     { name: 'hex', value: 'hex' },
     { name: 'rgb', value: 'rgb' },
     { name: 'hsl', value: 'hsl' },
@@ -23,11 +23,11 @@ exports.ConvertCommand = new discord_js_1.SlashCommandBuilder()
     .setDescription('convert between different color formats')
     .addStringOption(option => option.setName('from-format')
     .setDescription('the color format of your input colors')
-    .addChoices(...colorChoices)
+    .addChoices(...exports.colorChoices)
     .setRequired(true))
     .addStringOption(option => option.setName('to-format')
     .setDescription('your desired output color format')
-    .addChoices(...colorChoices)
+    .addChoices(...exports.colorChoices)
     .setRequired(true))
     .addStringOption(option => option.setName('input-colors')
     .setDescription('your input colors formatted according to `/help colorformat`')

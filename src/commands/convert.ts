@@ -2,7 +2,7 @@ import { CacheType, EmbedBuilder, CommandInteraction, SlashCommandBuilder } from
 import { iconURL } from "../index";
 import { Color, ColorFlag } from "../util/color";
 
-const colorChoices = [
+export const colorChoices = [
     {name: 'hex', value: 'hex'},
     {name: 'rgb', value: 'rgb'},
     {name: 'hsl', value: 'hsl'},
@@ -53,11 +53,9 @@ export const ConvertCommandAction = async (interaction : CommandInteraction<Cach
                 .setTimestamp()
                 .setFooter({text: 'Color.io © 2023'});
             
-            interaction.reply({
-                embeds: [receivedEmbed, responseEmbed]
-            });
-
-        }).catch(err => {
+            interaction.reply({embeds: [receivedEmbed, responseEmbed]});
+        })
+        .catch(err => {
             const errorEmbed = new EmbedBuilder()
                 .setColor(0xff0000)
                 .setTitle('Command Error: Convert')
@@ -67,8 +65,6 @@ export const ConvertCommandAction = async (interaction : CommandInteraction<Cach
                 .setTimestamp()
                 .setFooter({text: 'Color.io © 2023'});
             
-            interaction.reply({
-                embeds: [errorEmbed]
-            });
+            interaction.reply({embeds: [errorEmbed]});
         });
 }

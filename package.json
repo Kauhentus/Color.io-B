@@ -8,11 +8,11 @@
     "build": "tsc --build",
     "run": "node ./build/index.js",
     "dev": "npm run build && npm run run"
-
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@napi-rs/canvas": "^0.1.41",
     "discord.js": "^14.11.0"
   },
   "devDependencies": {

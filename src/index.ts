@@ -5,17 +5,22 @@ import { token } from './config.json';
 import { HelpCommand, HelpCommandAction } from './commands/help';
 import { AboutCommand, AboutCommandAction } from "./commands/about";
 import { ConvertCommand, ConvertCommandAction } from "./commands/convert";
+import { Drawer } from "./util/draw";
+import { Color } from "./util/color";
+import { ViewCommand, ViewCommandAction } from "./commands/view";
 
 
 const commands = [
     HelpCommand,
     AboutCommand,
-    ConvertCommand
+    ConvertCommand,
+    ViewCommand
 ];
 const commandDispatch = new Map<string, (interaction: CommandInteraction) => Promise<void>>();
 commandDispatch.set('help', HelpCommandAction);
 commandDispatch.set('about', AboutCommandAction);
 commandDispatch.set('convert', ConvertCommandAction);
+commandDispatch.set('view', ViewCommandAction)
 
 const rest = new REST({ version: '10' }).setToken(token);
 const loadCommands = async () => {
@@ -43,3 +48,9 @@ loadCommands().then(() => {
     
     client.login(token);
 });
+
+/*Drawer.squares([
+    new Color('00aaff', 'hex'),
+    new Color('ff00aa', 'hex'),
+    new Color('aaff00', 'hex')
+]);*/
