@@ -1,7 +1,7 @@
 import { Client, CommandInteraction, EmbedBuilder, Events, GatewayIntentBits, SlashCommandBuilder } from "discord.js";
 import { REST, Routes } from 'discord.js';
 
-import { token } from './token.json';
+import { clientid, token } from './token.json';
 import { HelpCommand, HelpCommandAction } from './commands/help';
 import { AboutCommand, AboutCommandAction } from "./commands/about";
 import { ConvertCommand, ConvertCommandAction } from "./commands/convert";
@@ -40,7 +40,7 @@ commandDispatch.set('palette', PaletteCommandAction)
 const rest = new REST({ version: '10' }).setToken(token);
 const loadCommands = async () => {
     console.log('Started refreshing application (/) commands.');
-    await rest.put(Routes.applicationCommands('918674664623058955'), { body: commands });
+    await rest.put(Routes.applicationCommands(clientid), { body: commands });
     console.log('Successfully reloaded application (/) commands.');
 }
 

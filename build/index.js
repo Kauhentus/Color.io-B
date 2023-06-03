@@ -48,7 +48,7 @@ commandDispatch.set('palette', palette_1.PaletteCommandAction);
 const rest = new discord_js_2.REST({ version: '10' }).setToken(token_json_1.token);
 const loadCommands = () => __awaiter(void 0, void 0, void 0, function* () {
     console.log('Started refreshing application (/) commands.');
-    yield rest.put(discord_js_2.Routes.applicationCommands('918674664623058955'), { body: commands });
+    yield rest.put(discord_js_2.Routes.applicationCommands(token_json_1.clientid), { body: commands });
     console.log('Successfully reloaded application (/) commands.');
 });
 exports.iconURL = 'https://cdn.discordapp.com/app-icons/918674664623058955/c15abbd61dcc8e0f42ad6262e839cad3.png?size=512';
