@@ -28,8 +28,8 @@ const AboutCommandAction = (interaction) => __awaiter(void 0, void 0, void 0, fu
             If you have any issues or questions, contact the developer here: https://discord.gg/MnGWM2s`)
         .setTimestamp()
         .setFooter({ text: 'Color.io © 2023' });
-    yield interaction.reply({
-        embeds: [helpEmbed]
-    });
+    yield interaction.reply({ embeds: [helpEmbed] })
+        .catch(() => { });
+    ;
 });
 exports.AboutCommandAction = AboutCommandAction;

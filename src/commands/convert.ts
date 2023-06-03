@@ -53,7 +53,8 @@ export const ConvertCommandAction = async (interaction : CommandInteraction<Cach
                 .setTimestamp()
                 .setFooter({text: 'Color.io © 2023'});
             
-            interaction.reply({embeds: [receivedEmbed, responseEmbed]});
+            interaction.reply({embeds: [receivedEmbed, responseEmbed]})
+                .catch(() => {/* ignore, no perms to reply to message */}); 
         })
         .catch(err => {
             const errorEmbed = new EmbedBuilder()
@@ -65,6 +66,7 @@ export const ConvertCommandAction = async (interaction : CommandInteraction<Cach
                 .setTimestamp()
                 .setFooter({text: 'Color.io © 2023'});
             
-            interaction.reply({embeds: [errorEmbed]});
+            interaction.reply({embeds: [errorEmbed]})
+                .catch(() => {/* ignore, no perms to reply to message */});
         });
 }

@@ -31,8 +31,9 @@ const ViewCommandAction = (interaction) => __awaiter(void 0, void 0, void 0, fun
     color_1.Color.parseColorString(inputString, type)
         .then((colors) => __awaiter(void 0, void 0, void 0, function* () {
         var _a;
+        const highlightColor = colors[colors.length - 1].getInt();
         const viewEmbed = new discord_js_1.EmbedBuilder()
-            .setColor(0x00aaff)
+            .setColor(highlightColor)
             .setThumbnail(index_1.iconURL)
             .setTitle(`Viewing ${colors.length} colors (${type}):`)
             .setDescription(`${colors.map((color) => color_1.Color.toFormatString(color, type, false)).join('   ')}
@@ -43,8 +44,9 @@ const ViewCommandAction = (interaction) => __awaiter(void 0, void 0, void 0, fun
             .setFooter({ text: 'Color.io © 2023' });
         const imageData = yield draw_1.Drawer.squares(colors);
         const imageAttachment = new discord_js_1.AttachmentBuilder(imageData);
-        yield interaction.reply({ embeds: [viewEmbed] });
-        (_a = interaction.channel) === null || _a === void 0 ? void 0 : _a.send({ files: [imageAttachment] });
+        yield interaction.reply({ embeds: [viewEmbed] })
+            .catch(() => { });
+        (_a = interaction.channel) === null || _a === void 0 ? void 0 : _a.send({ files: [imageAttachment] }).catch(() => { });
     }))
         .catch(err => {
         const errorEmbed = new discord_js_1.EmbedBuilder()
@@ -54,9 +56,8 @@ const ViewCommandAction = (interaction) => __awaiter(void 0, void 0, void 0, fun
                     **Check \`/help view\` and \`/help colorformat\` for more info** `)
             .setTimestamp()
             .setFooter({ text: 'Color.io © 2023' });
-        interaction.reply({
-            embeds: [errorEmbed]
-        });
+        interaction.reply({ embeds: [errorEmbed] })
+            .catch(() => { });
     });
 });
 exports.ViewCommandAction = ViewCommandAction;

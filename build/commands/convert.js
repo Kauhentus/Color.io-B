@@ -54,10 +54,10 @@ const ConvertCommandAction = (interaction) => __awaiter(void 0, void 0, void 0, 
                     **${toTypeCaps}**:\`[${colors.map(color => color_1.Color.toFormatString(color, toType, true)).join(', ')}]\``)
             .setTimestamp()
             .setFooter({ text: 'Color.io © 2023' });
-        interaction.reply({
-            embeds: [receivedEmbed, responseEmbed]
-        });
-    }).catch(err => {
+        interaction.reply({ embeds: [receivedEmbed, responseEmbed] })
+            .catch(() => { });
+    })
+        .catch(err => {
         const errorEmbed = new discord_js_1.EmbedBuilder()
             .setColor(0xff0000)
             .setTitle('Command Error: Convert')
@@ -65,9 +65,8 @@ const ConvertCommandAction = (interaction) => __awaiter(void 0, void 0, void 0, 
                     **Check \`/help convert\` and \`/help colorformat\` for more info** `)
             .setTimestamp()
             .setFooter({ text: 'Color.io © 2023' });
-        interaction.reply({
-            embeds: [errorEmbed]
-        });
+        interaction.reply({ embeds: [errorEmbed] })
+            .catch(() => { });
     });
 });
 exports.ConvertCommandAction = ConvertCommandAction;

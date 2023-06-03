@@ -21,7 +21,6 @@ export const AboutCommandAction = async (interaction : CommandInteraction<CacheT
         .setTimestamp()
         .setFooter({text: 'Color.io © 2023'});
     
-    await interaction.reply({
-        embeds: [helpEmbed]
-    });
+    await interaction.reply({embeds: [helpEmbed]})
+        .catch(() => {/* ignore, no perms to reply to message */});;
 }

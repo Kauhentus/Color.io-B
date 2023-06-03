@@ -147,8 +147,8 @@ const HelpCommandAction = (interaction) => __awaiter(void 0, void 0, void 0, fun
             .setTimestamp()
             .setFooter({ text: 'Color.io © 2023' });
     }
-    yield interaction.reply({
-        embeds: [helpEmbed]
-    });
+    yield interaction.reply({ embeds: [helpEmbed] })
+        .catch(() => { });
+    ;
 });
 exports.HelpCommandAction = HelpCommandAction;

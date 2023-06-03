@@ -23,8 +23,9 @@ export const ViewCommandAction = async (interaction : CommandInteraction<CacheTy
 
     Color.parseColorString(inputString, type)
         .then(async (colors) => {      
+            const highlightColor = colors[colors.length - 1].getInt();
             const viewEmbed = new EmbedBuilder()
-                .setColor(0x00aaff)
+                .setColor(highlightColor)
                 .setThumbnail(iconURL)
                 .setTitle(`Viewing ${colors.length} colors (${type}):`)
                 .setDescription(
@@ -39,8 +40,10 @@ export const ViewCommandAction = async (interaction : CommandInteraction<CacheTy
             const imageData = await Drawer.squares(colors)
             const imageAttachment = new AttachmentBuilder(imageData);
             
-            await interaction.reply({embeds: [viewEmbed]});
-            interaction.channel?.send({files: [imageAttachment]});
+            await interaction.reply({embeds: [viewEmbed]})
+                .catch(() => {/* ignore, no perms to reply to message */});
+            interaction.channel?.send({files: [imageAttachment]})
+                .catch(() => {/* ignore, no perms to send message/embed image */});
         })
         .catch(err => {
             const errorEmbed = new EmbedBuilder()
@@ -52,6 +55,7 @@ export const ViewCommandAction = async (interaction : CommandInteraction<CacheTy
                 .setTimestamp()
                 .setFooter({text: 'Color.io © 2023'});
             
-            interaction.reply({embeds: [errorEmbed]});
+            interaction.reply({embeds: [errorEmbed]})
+                .catch(() => {/* ignore, no perms to reply to message */});
         });
 }

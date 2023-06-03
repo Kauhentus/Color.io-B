@@ -173,7 +173,6 @@ export const HelpCommandAction = async (interaction : CommandInteraction<CacheTy
             .setFooter({text: 'Color.io © 2023'});
     }
 
-    await interaction.reply({
-        embeds: [helpEmbed]
-    });
+    await interaction.reply({embeds: [helpEmbed]})
+        .catch(() => {/* ignore, no perms to reply to message */});;
 }

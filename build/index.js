@@ -17,17 +17,20 @@ const help_1 = require("./commands/help");
 const about_1 = require("./commands/about");
 const convert_1 = require("./commands/convert");
 const view_1 = require("./commands/view");
+const palette_1 = require("./commands/palette");
 const commands = [
     help_1.HelpCommand,
     about_1.AboutCommand,
     convert_1.ConvertCommand,
-    view_1.ViewCommand
+    view_1.ViewCommand,
+    palette_1.PaletteCommand
 ];
 const commandDispatch = new Map();
 commandDispatch.set('help', help_1.HelpCommandAction);
 commandDispatch.set('about', about_1.AboutCommandAction);
 commandDispatch.set('convert', convert_1.ConvertCommandAction);
 commandDispatch.set('view', view_1.ViewCommandAction);
+commandDispatch.set('palette', palette_1.PaletteCommandAction);
 const rest = new discord_js_2.REST({ version: '10' }).setToken(config_json_1.token);
 const loadCommands = () => __awaiter(void 0, void 0, void 0, function* () {
     console.log('Started refreshing application (/) commands.');
@@ -47,7 +50,22 @@ loadCommands().then(() => {
         const commandName = interaction.commandName;
         const commandAction = commandDispatch.get(commandName);
         if (commandAction)
-            commandAction(interaction);
+            commandAction(interaction)
+                .then(() => {
+                // logging / metrics
+            })
+                .catch((err) => {
+                const errorEmbed = new discord_js_1.EmbedBuilder()
+                    .setColor(0xff0000)
+                    .setTitle('Unknown error')
+                    .setDescription(`Error message:
+                        ${err.toString()}
+                        ** ** ** **
+                        Please contact the developer here: https://discord.gg/MnGWM2s`)
+                    .setTimestamp()
+                    .setFooter({ text: 'Color.io © 2023' });
+                interaction.reply({ embeds: [errorEmbed] });
+            });
     }));
     client.login(config_json_1.token);
 });

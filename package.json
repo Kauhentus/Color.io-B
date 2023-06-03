@@ -13,7 +13,11 @@
   "license": "ISC",
   "dependencies": {
     "@napi-rs/canvas": "^0.1.41",
-    "discord.js": "^14.11.0"
+    "@types/get-pixels": "^3.3.2",
+    "discord.js": "^14.11.0",
+    "extract-colors": "^3.0.0",
+    "get-pixels": "^3.3.3",
+    "get-rgba-palette": "^2.0.1"
   },
   "devDependencies": {
     "typescript": "^5.1.3"
