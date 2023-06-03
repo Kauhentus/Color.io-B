@@ -36,7 +36,7 @@ class Color {
         return this.hslColor.getString(code);
     }
     getInt() {
-        return this.rgbColor.r * 256 * 256 + this.rgbColor.g * 256 + this.rgbColor.b;
+        return parseInt(this.getHexString(false), 16);
     }
     static parseColorString(str, type) {
         const cleanedStr = str

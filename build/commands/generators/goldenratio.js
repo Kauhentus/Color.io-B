@@ -9,7 +9,7 @@ const goldenRatioGenerator = (colorCount) => {
     const colors = Array(colorCount).fill(0).map(() => {
         currentOffset += goldenAngle;
         currentOffset %= 1;
-        return new color_1.Color([currentOffset * 360, 0.7 + Math.random() * 0.3, 0.5 + Math.random() * 0.5 - 0.25], 'hsl');
+        return new color_1.Color([currentOffset * 360, 0.7 + Math.random() * 0.3, 0.4 + Math.random() * 0.4], 'hsl');
     });
     return colors;
 };

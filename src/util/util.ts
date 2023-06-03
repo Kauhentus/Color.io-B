@@ -1,6 +1,8 @@
 export const randomInt = (start : number, stop : number) => Math.floor(Math.random() * (stop - start + 1) + start);
 
-export const randomFloat = (start : number, stop : number) => Math.random() * (stop - start + 1) + start;
+export const randomFloat = (start : number, stop : number) => Math.random() * (stop - start) + start;
+
+export const clamp01 = (n: number) => Math.min(Math.max(0.1, n), 1);
 
 export const isValidHttpUrl = (string : string) => {
     let url;

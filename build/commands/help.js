@@ -134,7 +134,7 @@ const HelpCommandAction = (interaction) => __awaiter(void 0, void 0, void 0, fun
             name: '**Palettes** - get color palettes or generate them from an image',
             value: '\`/help palette\`', inline: true
         }, {
-            name: '**Viewer** - view colors from RGB, hex, or HSV color coes',
+            name: '**Viewer** - view colors from RGB, HEX, or HSV color codes',
             value: '\`/help view\`', inline: true
         }, {
             name: '**Converter** - convert colors from one format to the next',

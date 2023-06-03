@@ -9,42 +9,38 @@ import { triadGenerator } from "./generators/triad";
 import { chunkIntoN, isValidHttpUrl, randomInt } from "../util/util";
 import getPixels from "get-pixels";
 import palette from "get-rgba-palette";
+import { pastelGenerator } from "./generators/pastel";
+import { tetradicGenerator } from "./generators/tetradic";
 
 const generators = [
-    goldenRatioGenerator,
+    //goldenRatioGenerator,
     harmonyGenerator,
-    triadGenerator
+    //triadGenerator,
+    tetradicGenerator,
+    //pastelGenerator
 ];
 const generatorNames = [
-    'golden-ratio',
+    //'golden-ratio',
     'harmony',
-    'triad'
+    //'triad',
+    'tetradic',
+    //'pastel'
 ];
 
-/*export const PaletteCommand = new SlashCommandBuilder()
-    .setName('palette')
-    .setDescription('generate either a normal or image color palette')
-    .addStringOption(option => 
-        option.setName('category')
-            .setDescription('choose between normal palette or image palette generation')
-            .addChoices(
-                {name: 'normal', value: 'normal'},
-                {name: 'image', value: 'image'}
-            )
-            .setRequired(true))
-    .addStringOption(option => 
-        option.setName('format')
-            .setDescription('the color format of the output colors')
-            .addChoices(...colorChoices)
-            .setRequired(true))
-    .addIntegerOption(option => 
-        option.setName('number-of-colors')
-            .setDescription('the number of colors to generate (max 16)')
-            .setRequired(false))
-    .addStringOption(option => 
-        option.setName('url')
-            .setDescription('A url ending in .jpg or .png for an image color palette')
-            .setRequired(false));*/
+const generatorPairs = [
+    {generator: goldenRatioGenerator, name: 'golden-ratio'},
+    
+    // {generator: harmonyGenerator, name: 'harmony'},
+
+    {generator: triadGenerator, name: 'triad'},
+    {generator: triadGenerator, name: 'triad'},
+
+    {generator: tetradicGenerator, name: 'tetradic'},
+    {generator: tetradicGenerator, name: 'tetradic'},
+    {generator: tetradicGenerator, name: 'tetradic'},
+
+    {generator: pastelGenerator, name: 'pastel'},
+];
 
 export const PaletteCommand = new SlashCommandBuilder()
     .setName('palette')
@@ -108,8 +104,8 @@ export const PaletteCommandAction = async (interaction : CommandInteraction<Cach
     }
 
     if(category === 'normal'){
-        const randomIndex = randomInt(0, generators.length - 1);
-        const colors = generators[randomIndex](numColors);
+        const randomIndex = randomInt(0, generatorPairs.length - 1);
+        const colors = generatorPairs[randomIndex].generator(numColors);
         
         const imageData = await Drawer.squares(colors)
         const imageAttachment = new AttachmentBuilder(imageData);
@@ -118,7 +114,7 @@ export const PaletteCommandAction = async (interaction : CommandInteraction<Cach
         const viewEmbed = new EmbedBuilder()
             .setColor(highlightColor)
             .setThumbnail(iconURL)
-            .setTitle(`Generated Color Palette (${type} ${numColors} ${generatorNames[randomIndex]}):`)
+            .setTitle(`Generated Color Palette (${type} ${numColors} ${generatorPairs[randomIndex].name}):`)
             .setDescription(
                 `${colors.map(color => Color.toFormatString(color, type, false)).join('   ')}
                 ＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿

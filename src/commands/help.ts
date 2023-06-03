@@ -155,7 +155,7 @@ export const HelpCommandAction = async (interaction : CommandInteraction<CacheTy
                     value: '\`/help palette\`', inline: true
                 },
                 {
-                    name: '**Viewer** - view colors from RGB, hex, or HSV color coes', 
+                    name: '**Viewer** - view colors from RGB, HEX, or HSV color codes', 
                     value: '\`/help view\`', inline: true
                 },
                 {
