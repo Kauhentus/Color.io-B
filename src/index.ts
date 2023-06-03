@@ -1,7 +1,7 @@
 import { Client, CommandInteraction, EmbedBuilder, Events, GatewayIntentBits, SlashCommandBuilder } from "discord.js";
 import { REST, Routes } from 'discord.js';
 
-import { token } from './config.json';
+import { token } from './token.json';
 import { HelpCommand, HelpCommandAction } from './commands/help';
 import { AboutCommand, AboutCommandAction } from "./commands/about";
 import { ConvertCommand, ConvertCommandAction } from "./commands/convert";

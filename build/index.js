@@ -12,7 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.iconURL = void 0;
 const discord_js_1 = require("discord.js");
 const discord_js_2 = require("discord.js");
-const config_json_1 = require("./config.json");
+const token_json_1 = require("./token.json");
 const help_1 = require("./commands/help");
 const about_1 = require("./commands/about");
 const convert_1 = require("./commands/convert");
@@ -45,7 +45,7 @@ commandDispatch.set('about', about_1.AboutCommandAction);
 commandDispatch.set('convert', convert_1.ConvertCommandAction);
 commandDispatch.set('view', view_1.ViewCommandAction);
 commandDispatch.set('palette', palette_1.PaletteCommandAction);
-const rest = new discord_js_2.REST({ version: '10' }).setToken(config_json_1.token);
+const rest = new discord_js_2.REST({ version: '10' }).setToken(token_json_1.token);
 const loadCommands = () => __awaiter(void 0, void 0, void 0, function* () {
     console.log('Started refreshing application (/) commands.');
     yield rest.put(discord_js_2.Routes.applicationCommands('918674664623058955'), { body: commands });
@@ -102,5 +102,5 @@ loadCommands().then(() => {
     client.on('error', (err) => {
         logger_1.logger.error(`error | - | - | source-B | ${err}`);
     });
-    client.login(config_json_1.token);
+    client.login(token_json_1.token);
 });
