@@ -2,7 +2,7 @@ import { Color } from "./color"
 import { createCanvas } from "@napi-rs/canvas";
 
 const squareSize = 250;
-const indices = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
+const indices = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
 
 const canvases = indices.map(v => {
     const canvas = createCanvas(
@@ -24,7 +24,7 @@ export class Drawer {
         const {
             canvas: canvas,
             ctx: ctx
-        } = canvases[colors.length - 2];
+        } = canvases[colors.length - 1];
 
         for(let i = 0; i < colors.length; i++){
             ctx.fillStyle = '#' + colors[i].getHexString(false);
