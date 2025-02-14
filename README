@@ -1,0 +1,24 @@
+docker commands:
+
+    sudo docker build -t color-io-image .
+    sudo docker run -dit --name color-io-container color-io-image /bin/sh
+    sudo docker exec -it color-io-container /bin/sh
+
+    sudo docker stop color-io-container
+    sudo docker rm color-io-container
+
+    sudo docker ps              # list docker containers
+    sudo docker system df       # show how much space is utilized
+    sudo docker system prune    # free up space
+
+docker compose commands:
+
+    sudo docker build -t color-io-image .
+
+    sudo docker compose up -d
+
+    sudo docker exec -it color-io-container /bin/sh
+
+    sudo docker compose down
+    
+nohup node server/build/index.js &

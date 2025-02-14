@@ -1,0 +1,5 @@
+services:
+  color-io:
+    image: color-io-image
+    container_name: color-io-container
+    restart: always

@@ -19,9 +19,7 @@
     "get-pixels": "^3.3.3",
     "get-rgba-palette": "^2.0.1",
     "winston": "^3.9.0",
-    "winston-daily-rotate-file": "^4.7.1"
-  },
-  "devDependencies": {
+    "winston-daily-rotate-file": "^4.7.1",
     "typescript": "^5.1.3"
   }
 }
