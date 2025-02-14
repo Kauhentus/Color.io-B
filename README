@@ -7,9 +7,9 @@ docker commands:
     sudo docker stop color-io-container
     sudo docker rm color-io-container
 
-    sudo docker ps              # list docker containers
-    sudo docker system df       # show how much space is utilized
-    sudo docker system prune    # free up space
+    sudo docker ps
+    sudo docker system df
+    sudo docker system prune
 
 docker compose commands:
 
@@ -20,5 +20,3 @@ docker compose commands:
     sudo docker exec -it color-io-container /bin/sh
 
     sudo docker compose down
-    
-nohup node server/build/index.js &
